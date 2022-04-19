@@ -1,0 +1,12 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<p>Приветствую, мой друг! Введи имя и узнай как оно пишется наоборот</p>
+<form action="/name" method="GET">
+  <input type="text" value="Впишите Имя" name="name" />
+  <input type="submit" value="Get!">
+</form>
+<form action="/name" method="POST">
+  <input type="text" value="и снова " name="name" />
+  <input type="submit" value="Post!">
+</form>
+{% endblock %}

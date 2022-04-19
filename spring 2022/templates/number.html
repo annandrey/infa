@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<p>Добро пожаловать на эту страницу!</p>
+<p>Введите число, чтобы увидеть красивую жабку</p>
+<form action="/number" method="GET">
+  <input type="text" value="Введите число" name="number" />
+  <input type="submit" value="Get!">
+</form>
+<p align = "center"><img src = {{pics}} width = "700" height = "650"></p>
+{% endblock %}
