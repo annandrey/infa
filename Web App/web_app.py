@@ -31,15 +31,25 @@ NICE_PICS = ["pics/frog1.jpg", "pics/frog3.jpg", "pics/frog4.jpg", "pics/frog5.j
 def number():
     if request.method == 'GET':
         number_param = request.args.get('number')
+    flag = True
     if number_param is None:
         number_param = 0
     else:
-        number_param = int(number_param[0])
-    number_param %= 5
-    pics = NICE_PICS[number_param]
+        for i in number_param:
+            if not (i >= "0" and i<= "9"):
+                flag = False
+        if flag:
+            number_param = int(number_param[0])
+    if flag:
+        txt_error = ""
+        number_param %= 5
+        pics = NICE_PICS[number_param]
+    else:
+        txt_error = "Ошибка ввода! На ввод нужно число"
+        pics = "pics/error.png"
     return flask.render_template(
         'number.html', 
-        pics = pics
+        pics = pics, error = txt_error
     )
 if __name__ == '__main__':
    app.run(debug = True)
